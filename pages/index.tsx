@@ -6,11 +6,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Next Pizza - Пиццы</title>
       </Head>
-      <div style={{ width: 1200, margin: '0 auto' }}>
-      </div>
     </>
   )
 };

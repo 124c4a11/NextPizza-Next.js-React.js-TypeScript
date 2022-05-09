@@ -10,6 +10,7 @@ import styles from './Layout.module.scss';
 
 import { Container } from './Container/Container';
 import { Button } from 'components';
+import { Navbar } from './Navbar/Navbar';
 
 
 interface LayoutProps {
@@ -40,6 +41,7 @@ export function Layout({ children }: LayoutProps): JSX.Element {
       >Перейти к основному контенту</Button>
 
       <div className={styles['layout__inner']}>
+        <Navbar />
         <Container
           component="main"
           className="flow"
