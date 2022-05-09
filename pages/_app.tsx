@@ -2,6 +2,8 @@ import 'scss/global.scss';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import { wrapper } from 'store';
+
 import { Layout } from 'layout/Layout';
 
 
@@ -19,4 +21,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

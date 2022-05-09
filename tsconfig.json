@@ -28,7 +28,16 @@
       ],
       "@/scss/*": [
         "scss/*"
-      ]
+      ],
+      "@/interfaces/*": [
+        "interfaces/*"
+      ],
+      "@/store/*": [
+        "store/*"
+      ],
+      "@/services/*": [
+        "services/*"
+      ],
     }
   },
   "include": [
