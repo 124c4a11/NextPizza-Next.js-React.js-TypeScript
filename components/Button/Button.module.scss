@@ -1,0 +1,180 @@
+@keyframes zoomIn {
+  from { transform: scale(0) };
+  to { transform: scale(1) };
+}
+
+
+$variants: (
+  "primary": (
+    "main-color": var(--primary),
+    "second-color": #fff,
+    "focus-color": var(--primary-darkened),
+  ),
+
+  "black": (
+    "main-color": #000,
+    "second-color": #fff,
+    "focus-color": #404040,
+  ),
+);
+
+$outline-variants: (
+  "primary": (
+    "main-color": var(--primary),
+    "second-color": #fff,
+    "focus-color": var(--primary),
+  ),
+
+  "secondary": (
+    "main-color": var(--gray-dark),
+    "second-color": #fff,
+    "focus-color": #000,
+  ),
+);
+
+$text-variants: (
+  "secondary": (
+    "main-color": var(--gray-dark),
+    "focus-color": #000,
+  ),
+
+  "black": (
+    "main-color": #000,
+    "focus-color": var(--primary),
+  )
+);
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  border-style: solid;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition-duration: var(--duration);
+  cursor: pointer;
+
+  & > * + * { margin-left: .43rem; }
+
+  &:focus { outline: none; }
+
+  &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+.btn_rounded,
+.btn_circle { font-weight: 700; }
+
+.btn_rounded {
+  padding: .56em 1.1em;
+  border-width: 1px;
+  border-radius: 2em;
+}
+
+.btn_circle{
+  width: 2em;
+  height: 2em;
+  padding: .3em;
+  border-width: 2px;
+  border-radius: 50%;
+}
+
+.btn_text {
+  padding: .5em 0;
+  border: none;
+  font-weight: 400;
+}
+
+// variants
+
+@each $variant, $colors in $variants {
+  .btn_#{$variant} {
+    background-color: map-get($colors, "main-color");
+    border-color: map-get($colors, "main-color");
+    color: map-get($colors, "second-color");
+
+    .btn__counter {
+      background-color: map-get($colors, "second-color");
+      color: map-get($colors, "main-color");
+    }
+
+    &:hover,
+    &:focus {
+      background-color: map-get($colors, "focus-color");
+      border-color: map-get($colors, "focus-color");
+
+      .btn__counter {
+        color: map-get($colors, "focus-color");
+      }
+    }
+  }
+}
+
+// outline variants
+
+@each $variant, $colors in $outline-variants {
+  .btn_outline-#{$variant} {
+    border-color: map-get($colors, "main-color");
+    color: map-get($colors, "main-color");
+    background-color: transparent;
+
+    .btn__counter {
+      color: map-get($colors, "second-color");
+      background-color: map-get($colors, "main-color");
+    }
+
+    &:hover,
+    &:focus {
+      border-color: map-get($colors, "focus-color");
+      color: map-get($colors, "second-color");
+      background-color: map-get($colors, "focus-color");
+
+      .btn__counter {
+        color: map-get($colors, "focus-color");
+        background-color: map-get($colors, "second-color");
+      }
+    }
+  }
+}
+
+// text variants
+
+@each $variant, $colors in $text-variants {
+  .btn_text-#{$variant} {
+    background: none;
+    color: map-get($colors, "main-color");
+
+    .btn__counter {
+      color: #fff;
+      background-color: map-get($colors, "main-color");
+    }
+
+    &:hover,
+    &:focus {
+      color: map-get($colors, "focus-color");
+
+      .btn__counter {
+        background-color: map-get($colors, "focus-color");
+      }
+    }
+  }
+}
+
+.btn_active { pointer-events: none; }
+
+.btn__counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  height: 1.69em;
+  min-width: 1.69em;
+  padding: .18em;
+  border-radius: 2em;
+  font-size: .81em;
+  transition-duration: var(--duration);
+  animation: zoomIn var(--duration);
+}
