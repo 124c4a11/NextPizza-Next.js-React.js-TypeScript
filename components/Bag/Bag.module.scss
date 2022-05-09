@@ -1,0 +1,30 @@
+.bag {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  padding: .81em .62em;
+  border-radius: 2em;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--primary);
+  transition-duration: var(--duration);
+
+  & > * + * {
+    border-left: 1px solid currentColor;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary-darkened);
+    outline: none;
+  }
+}
+
+.bag__text {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  padding: .13em .81em;
+
+  & > * + * { margin-left: .3rem; }
+}
