@@ -1,0 +1,31 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(18.75em, 83.75em);
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3.12em;
+  background-color: #ffdf8c;
+
+  @media (max-width: 69.62em) {
+    padding: 1.25em;
+  }
+
+  @media (max-width: 25em) {
+    padding: .62em;
+  }
+}
+
+.layout__inner {
+  border-radius: .62rem;
+  background-color: #fff;
+
+  & > * + * {
+    border-top: 1px solid var(--gray)
+  }
+}
+
+.skip-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
