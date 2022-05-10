@@ -6,3 +6,4 @@ export * from './CardGrid/CardGrid';
 export * from './ProductList/ProductList';
 export * from './ProductListPreloader/ProductListPreloader';
 export * from './SortSelect/SortSelect';
+export * from './Categories/Categories';
