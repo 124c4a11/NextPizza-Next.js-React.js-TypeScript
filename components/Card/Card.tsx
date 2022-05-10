@@ -12,8 +12,14 @@ import styles from './Card.module.scss';
 import PlusIcon from './plus.svg';
 
 import { IPizza } from 'interfaces/IPizza';
+import { ICartProduct } from 'interfaces/ICartProduct';
+
 import { doughTypes } from 'utils/static-data';
 import { Button } from 'components';
+
+import { useAppDispatch, useAppSelector } from 'hooks/redux.hooks';
+import { addProductToCart } from '@/store/reducers/cart/cart.reducer';
+import { getProductTotalQuantityById } from '@/store/reducers/cart/cart.selectors';
 
 
 interface OwnProps<T> {
@@ -47,6 +53,9 @@ export function Card<T extends ElementType = 'div'>({
   const [size, setSize] = useState<number>(sizes[0]);
   const [type, setType] = useState<number>(types[0]);
 
+  const totalQuantity = useAppSelector(getProductTotalQuantityById(id));
+  const dispatch = useAppDispatch();
+
   const Component = component || 'div';
 
   function changeSize(e: ChangeEvent<HTMLInputElement>) {
@@ -55,6 +64,21 @@ export function Card<T extends ElementType = 'div'>({
 
   function changeType(e: ChangeEvent<HTMLInputElement>) {
     setType(Number(e.target.value));
+  }
+
+  function addToCart() {
+    const product: ICartProduct = {
+      id,
+      name,
+      imageUrl,
+      type,
+      size,
+      price,
+      quantity: 1,
+      totalPrice: price,
+    };
+
+    dispatch(addProductToCart(product));
   }
 
   return (
@@ -145,8 +169,9 @@ export function Card<T extends ElementType = 'div'>({
         </p>
         <Button
           variant="outline-primary"
-          counter={1}
-          aria-label={`Пицца ${name}. Цена: ${price} ₽ добавить в корзину. Количество товара в корзине ${1}.`}
+          counter={totalQuantity}
+          aria-label={`Пицца ${name}. Цена: ${price} ₽ добавить в корзину. Количество товара в корзине ${totalQuantity}.`}
+          onClick={addToCart}
         ><PlusIcon /><span>Добавить</span></Button>
       </div>
     </Component>
