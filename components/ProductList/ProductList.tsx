@@ -2,7 +2,12 @@ import { useAppSelector } from 'hooks/redux.hooks';
 
 import { getProducts } from 'store/reducers/products/products.selectors';
 
-import { Card, CardGrid, CardGridProps } from 'components';
+import {
+  Card,
+  CardGrid,
+  CardGridProps,
+  ProductListPreloader
+} from 'components';
 
 
 interface ProductListProps extends Omit<CardGridProps, 'children'> { };
@@ -11,7 +16,7 @@ interface ProductListProps extends Omit<CardGridProps, 'children'> { };
 export function ProductList(props: ProductListProps): JSX.Element {
   const { products, pending, error } = useAppSelector(getProducts);
 
-  if (pending) return <h2>Loading...</h2>;
+  if (pending) return <ProductListPreloader />;
   if (error) return <h2>Error: {error}</h2>;
 
   return (
