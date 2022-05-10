@@ -5,11 +5,13 @@ import productsReducer from './products/products.reducer';
 import { productsSaga } from './products/products.saga';
 
 import cartReducer from './cart/cart.reducer';
+import filterReducer from './filter/filter.reducer';
 
 
 export const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
+  filter: filterReducer,
 });
 
 
