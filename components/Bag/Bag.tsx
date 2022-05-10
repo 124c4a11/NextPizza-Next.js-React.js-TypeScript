@@ -6,6 +6,9 @@ import styles from './Bag.module.scss';
 
 import CartIcon from './cart.svg';
 
+import { useAppSelector } from 'hooks/redux.hooks';
+import { getCart } from '@/store/reducers/cart/cart.selectors';
+
 
 interface BagProps extends DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> { }
 
@@ -14,8 +17,7 @@ export function Bag({
   className,
   ...props
 }: BagProps): JSX.Element {
-  const quantity = 10;
-  const totalPrice = 10;
+  const { quantity, totalPrice } = useAppSelector(getCart);
 
   return (
     <Link href="/cart">
