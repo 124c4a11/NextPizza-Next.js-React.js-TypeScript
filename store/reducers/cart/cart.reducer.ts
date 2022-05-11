@@ -45,6 +45,10 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    setCart(_, action: PayloadAction<ICart>) {
+      return action.payload;
+    },
+
     addProductToCart(state, { payload: product }: PayloadAction<ICartProduct>) {
       const { products } = state;
       const findedProduct = findProductByOptions(products, product);
@@ -62,6 +66,7 @@ const cartSlice = createSlice({
 
 
 export const {
+  setCart,
   addProductToCart,
 } = cartSlice.actions;
 

@@ -10,7 +10,7 @@
   transition-duration: var(--duration);
 
   & > * + * {
-    border-left: 1px solid currentColor;
+    border-left: 1px solid rgba(255, 255, 255, .25);
   }
 
   &:hover,
