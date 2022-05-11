@@ -9,3 +9,4 @@ export * from './SortSelect/SortSelect';
 export * from './Categories/Categories';
 export * from './Filter/Filter';
 export * from './H/H';
+export * from './CatalogTitle/CatalogTitle';
