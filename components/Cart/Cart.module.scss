@@ -1,0 +1,36 @@
+.action-bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-items: flex-start;
+  gap: 1.25em 1.87em;
+
+  @media (max-width: 36.25em) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.text-total {
+  margin: 0;
+  font-size: 1.37rem;
+}
+
+.text-primary { color: var(--primary); }
+
+.empty-msg {
+  text-align: center;
+
+  & > p {
+    margin: .2em 0;
+    font-size: 1.12rem;
+    color: var(--gray-dark);
+  }
+}
+
+.empty-msg__title {
+  margin-bottom: .32em;
+  justify-content: center;
+}
+
+.empty-msg__img { margin: 2.5em 0; }

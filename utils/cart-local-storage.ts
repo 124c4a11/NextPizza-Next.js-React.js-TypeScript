@@ -18,3 +18,8 @@ export function getCartFromLocalStorage(): ICart | null {
 
   return JSON.parse(cart);
 }
+
+
+export function removeCartFromLocalStorage() {
+  localStorage.removeItem(storageName);
+}

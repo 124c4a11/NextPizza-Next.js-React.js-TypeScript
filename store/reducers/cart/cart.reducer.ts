@@ -112,6 +112,10 @@ const cartSlice = createSlice({
 
       decreaseCartTotalQuantityAndPrice(state, productTotalPrice, productQuantity);
     },
+
+    clearCart() {
+      return initialState;
+    },
   }
 });
 
@@ -121,6 +125,7 @@ export const {
   addProductToCart,
   decreaseProductQuantityInCart,
   removeProductFromCart,
+  clearCart,
 } = cartSlice.actions;
 
 

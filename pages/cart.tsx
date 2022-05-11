@@ -10,6 +10,7 @@ const CartPage: NextPage = () => {
       <Head>
         <title>NextPizza - Корзина</title>
       </Head>
+
       <Cart />
     </>
   )
