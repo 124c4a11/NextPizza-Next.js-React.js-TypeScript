@@ -10,3 +10,7 @@ export * from './Categories/Categories';
 export * from './Filter/Filter';
 export * from './H/H';
 export * from './CatalogTitle/CatalogTitle';
+export * from './Cart/Cart';
+export * from './CartTable/CartTable';
+export * from './CartTableItem/CartTableItem';
+export * from './Counter/Counter';

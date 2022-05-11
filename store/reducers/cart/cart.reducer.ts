@@ -31,6 +31,16 @@ function increaseProductTotalQuantityAndPrice(
 }
 
 
+function decreaseProductTotalQuantityAndPrice(
+  product: ICartProduct,
+  price: number,
+  quantity: number,
+) {
+  product.totalPrice = Number((product.totalPrice - price).toFixed(2));
+  product.quantity -= quantity;
+}
+
+
 function increaseCartTotalQuantityAndPrice(
   state: ICart,
   price: number,
@@ -38,6 +48,16 @@ function increaseCartTotalQuantityAndPrice(
 ) {
   state.totalPrice = Number((state.totalPrice + price).toFixed(2));
   state.quantity += quantity;
+}
+
+
+function decreaseCartTotalQuantityAndPrice(
+  state: ICart,
+  price: number,
+  quantity: number,
+) {
+  state.totalPrice = Number((state.totalPrice - price).toFixed(2));
+  state.quantity -= quantity;
 }
 
 
@@ -61,6 +81,37 @@ const cartSlice = createSlice({
 
       increaseCartTotalQuantityAndPrice(state, product.price, 1);
     },
+
+    decreaseProductQuantityInCart(state, { payload: product }: PayloadAction<ICartProduct>) {
+      const { products } = state;
+      const findedProduct = findProductByOptions(products, product);
+
+      if (findedProduct && findedProduct.quantity > 1) {
+        decreaseProductTotalQuantityAndPrice(findedProduct, product.price, 1);
+
+        decreaseCartTotalQuantityAndPrice(state, product.price, 1);
+      }
+    },
+
+    removeProductFromCart(state, { payload: product }: PayloadAction<ICartProduct>) {
+      const { products } = state;
+
+      let productTotalPrice = 0;
+      let productQuantity = 0;
+
+      const filteredProducts = products.filter(({ id, type, size, totalPrice, quantity }) => {
+        if (id === product.id && type === product.type && size === product.size) {
+          productTotalPrice = totalPrice;
+          productQuantity = quantity;
+        }
+
+        return id !== product.id || type !== product.type || size !== product.size;
+      });
+
+      state.products = filteredProducts;
+
+      decreaseCartTotalQuantityAndPrice(state, productTotalPrice, productQuantity);
+    },
   }
 });
 
@@ -68,6 +119,8 @@ const cartSlice = createSlice({
 export const {
   setCart,
   addProductToCart,
+  decreaseProductQuantityInCart,
+  removeProductFromCart,
 } = cartSlice.actions;
 
 
