@@ -5,7 +5,7 @@ import { END } from 'redux-saga';
 import { wrapper } from 'store';
 import { productsFetchRequest } from 'store/reducers/products/products.reducer';
 
-import { Categories, ProductList, SortSelect } from 'components';
+import { Filter, ProductList } from 'components';
 
 
 const Home: NextPage = () => {
@@ -15,8 +15,7 @@ const Home: NextPage = () => {
         <title>Next Pizza - Пиццы</title>
       </Head>
 
-      <Categories />
-      <SortSelect />
+      <Filter />
       <ProductList />
     </>
   )

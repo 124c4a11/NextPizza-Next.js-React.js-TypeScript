@@ -1,0 +1,16 @@
+.filter {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.25em 1.87em;
+
+  @media (max-width: 48.75em) {
+    grid-template-columns: auto;
+  }
+}
+
+.filter__select {
+  @media (max-width: 48.75em) {
+    justify-self: center;
+  }
+}
