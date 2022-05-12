@@ -1,3 +1,5 @@
+import styles from './CatalogTitle.module.scss';
+
 import { H, HProps } from 'components';
 
 import { useAppSelector } from 'hooks/redux.hooks';
@@ -14,6 +16,10 @@ export function CatalogTitle({
   const selectedCategory = useAppSelector(getCategory);
 
   return (
-    <H component={component || "h2"} {...props}>{`${selectedCategory?.title} пиццы`}</H>
+    <H
+      className={styles['catalog-title']}
+      component={component || "h2"}
+      {...props}
+    >{`${selectedCategory?.title} пиццы`}</H>
   );
 }
