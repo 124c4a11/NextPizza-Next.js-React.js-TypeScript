@@ -4,7 +4,7 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import styles from './Logo.module.scss';
 
-import LogoIcon from './Logo.svg';
+import LogoIcon from './logo.svg';
 
 
 interface LogoProps extends DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> { }
